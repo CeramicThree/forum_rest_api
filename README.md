@@ -1,2 +1,2 @@
-# forum_rest_api
+# Forum
 Simple forum on Spring with REST
