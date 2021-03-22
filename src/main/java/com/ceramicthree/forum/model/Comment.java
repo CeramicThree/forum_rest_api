@@ -1,5 +1,6 @@
 package com.ceramicthree.forum.model;
 
+import jdk.jfr.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,5 @@ public class Comment {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "post_id")
     private Post post;
+    private Long commentId;
 }

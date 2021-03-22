@@ -26,25 +26,25 @@ public class PostController {
         return (Collection<Post>) postRepository.findAll();
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/posts/{id}")
     public ResponseEntity<?> getSinglePost(@PathVariable Long id){
         Optional<Post> post = postRepository.findById(id);
         return post.map(response -> (ResponseEntity.ok().body(response))).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/post")
+    @PostMapping("/posts")
     public ResponseEntity<Post> createPost(@RequestBody Post post) throws URISyntaxException {
         Post result = postRepository.save(post);
         return ResponseEntity.created(new URI("/api/post" + result.getId())).body(result);
     }
 
-    @PutMapping("/post/{id}")
+    @PutMapping("/posts/{id}")
     public ResponseEntity<Post> updatePost(@RequestBody Post post){
         Post result = postRepository.save(post);
         return ResponseEntity.ok().body(result);
     }
 
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/posts/{id}")
     public ResponseEntity<?> deletePost(@PathVariable Long id) throws URISyntaxException {
         postRepository.deleteById(id);
         return ResponseEntity.ok().build();

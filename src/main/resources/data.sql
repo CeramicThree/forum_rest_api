@@ -8,7 +8,7 @@ insert into POST values ( 2, now(), 'header2', 'text2', 2);
 insert into POST values ( 3, now(), 'header3', 'text3', 3);
 insert into POST values ( 4, now(), 'header4', 'text4', 4);
 
-insert into COMMENT values ( 1, now(), 'text1', 1, 1);
-insert into COMMENT values ( 2, now(), 'text2', 2, 2);
-insert into COMMENT values ( 3, now(), 'text3', 3, 3);
-insert into COMMENT values ( 4, now(), 'text4', 4, 4);
+insert into COMMENT values ( 1, null, now(), 'text1', 1, 1);
+insert into COMMENT values ( 2, 1, now(), 'text2', 2, 2);
+insert into COMMENT values ( 3, 2, now(), 'text3', 3, 3);
+insert into COMMENT values ( 4, 2, now(), 'text4', 4, 4);
