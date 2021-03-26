@@ -1,6 +1,6 @@
 package com.ceramicthree.forum.service;
 
-import com.ceramicthree.forum.exception.CustomMailEx;
+import com.ceramicthree.forum.exception.CustomEx;
 import com.ceramicthree.forum.model.NotificationEmail;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,17 +22,17 @@ public class MailService {
     void sendMail(NotificationEmail notificationEmail) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-            messageHelper.setFrom("ceramicthree@");
+            messageHelper.setFrom("forum@email.ru");
             messageHelper.setTo(notificationEmail.getRecipient());
             messageHelper.setSubject(notificationEmail.getSubject());
             messageHelper.setText(notificationEmail.getBody());
         };
         try {
             mailSender.send(messagePreparator);
-            log.info("Activation email sent!!");
+            log.info("Activation email sent!");
         } catch (MailException e) {
             log.error("Exception occurred when sending mail", e);
-            throw new CustomMailEx("Exception occurred when sending mail to " + notificationEmail.getRecipient());
+            throw new CustomEx("Exception occurred when sending mail to " + notificationEmail.getRecipient());
         }
     }
 }
