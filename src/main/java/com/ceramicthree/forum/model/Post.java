@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -24,4 +25,10 @@ public class Post {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
     private User user;
+    @ManyToMany
+    @JoinTable(
+            name = "posts_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
 }
