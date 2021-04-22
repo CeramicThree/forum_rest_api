@@ -21,7 +21,7 @@ public class Post {
     private String header;
     private String text;
     private Instant createdDate;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
     private User user;

@@ -17,7 +17,7 @@ public class JwtProvider {
         User user = (User) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject(user.getUsername())
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS256, jwtSecret)
                 .compact();
     }
 

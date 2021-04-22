@@ -7,6 +7,8 @@ import {
   Route,
 } from "react-router-dom";
 import AddPost from '../Post/AddPost';
+import LoginForm from '../LoginForm/LoginForm';
+import Profile from '../Profile/Profile';
 
 class App extends Component{
   render(){
@@ -15,6 +17,8 @@ class App extends Component{
         <Switch>
           <Route path='/' exact component={PostList} />
           <Route path='/addPost' exact component={AddPost} />
+          <Route path='/login' exact component={LoginForm} />
+          <Route path='/profile' exact component={Profile} />
         </Switch>
       </Router>
     );
