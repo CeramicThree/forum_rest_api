@@ -20,12 +20,12 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping("/users")
+    @GetMapping("/users")
     public Collection<User> getUsers(){
         return (Collection<User>) userRepository.findAll();
     }
 
-    @RequestMapping("/users/{login}")
+    @GetMapping("/users/{login}")
     public ResponseEntity<User> getUserByLogin(@PathVariable String login){
         Optional<User> user = userRepository.findByLogin(login);
         return user.map(response -> (ResponseEntity.ok().body(response))).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));

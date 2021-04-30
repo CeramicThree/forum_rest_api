@@ -12,10 +12,10 @@ class AddPost extends Component {
       text: "",
       createdDate: new Date(),
       user: {
-        id: '',
-        email: '',
-        login: '',
-        password: ''
+        id: "",
+        email: "",
+        login: "",
+        password: "",
       },
     };
 
@@ -24,13 +24,16 @@ class AddPost extends Component {
     this.fetchUserByLogin = this.fetchUserByLogin.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchUserByLogin();
+  }
+
   handleSubmit(event) {
+    console.log(this.state.user);
     const date = Date.now();
     this.setState({
       createdDate: date,
     });
-    this.fetchUserByLogin();
-    console.log(this.state);
     axios
       .post("http://localhost:8081/api/posts/", this.state, {
         headers: {
@@ -39,11 +42,11 @@ class AddPost extends Component {
           Authorization: "Bearer " + localStorage.getItem("authorization"),
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        console.log(this.state.user);
+        window.location.replace("/");
       });
     event.preventDefault();
-    // window.location.replace("/");
   }
 
   handleChange = (event) => {
@@ -56,17 +59,20 @@ class AddPost extends Component {
     return decoded.sub;
   }
 
-  fetchUserByLogin() {
-    axios
+  async fetchUserByLogin() {
+    await axios
       .get("http://localhost:8081/api/users/" + this.getUsernameFromJwt(), {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("authorization"),
         },
       })
-      .then((res) => {
+      .then((result) => {
         this.setState({
           user: {
-            id: res.data.id,
+            id: result.data.id,
+            email: result.data.email,
+            login: result.data.login,
+            password: result.data.password,
           },
         });
       });
