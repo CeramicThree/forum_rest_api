@@ -20,6 +20,8 @@ public class Post {
     private Long id;
     private String header;
     private String text;
+    private String fullText;
+    private String imageUrl;
     private Instant createdDate;
     @ManyToOne()
     @OnDelete(action = OnDeleteAction.CASCADE)

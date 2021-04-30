@@ -77,6 +77,7 @@ class PostList extends Component {
           <div className="row">
             {posts.map((post) => (
               <Post
+                imageUrl={post.imageUrl}
                 ident={post.id}
                 header={post.header}
                 text={post.text}

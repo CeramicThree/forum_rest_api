@@ -8,6 +8,7 @@ class AddPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      imageUrl: "",
       header: "",
       text: "",
       createdDate: new Date(),
@@ -85,6 +86,17 @@ class AddPost extends Component {
         <div className="container mt-4" style={{ width: "35%" }}>
           <h3 className="text-center mb-4">Adding post</h3>
           <Form onSubmit={this.handleSubmit}>
+            <FormGroup>
+              <Label tag="h5" for="imageUrl">
+                Image URL
+              </Label>
+              <Input
+                type="text"
+                name="imageUrl"
+                id="imageUrl"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
             <FormGroup>
               <Label tag="h5" for="header">
                 Header

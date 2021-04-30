@@ -9,6 +9,7 @@ import {
 import AddPost from '../Post/AddPost';
 import LoginForm from '../LoginForm/LoginForm';
 import Profile from '../Profile/Profile';
+import SinglePost from '../Post/SinglePost';
 
 class App extends Component{
   render(){
@@ -19,6 +20,7 @@ class App extends Component{
           <Route path='/addPost' exact component={AddPost} />
           <Route path='/login' exact component={LoginForm} />
           <Route path='/profile' exact component={Profile} />
+          <Route path='/post/:ident' exact component={SinglePost} />
         </Switch>
       </Router>
     );
